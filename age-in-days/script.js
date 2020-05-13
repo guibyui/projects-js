@@ -1,15 +1,12 @@
-
-
 function clickMe() {
     var birthYear = prompt("Hi! What year were you born?")
-
     var date = new Date();
-    var year = date.getFullYear();  
+    var year = date.getFullYear();
 
     var yourAge = year - birthYear;
     var yourAgeInDays = (year - birthYear) * 365;
     var yourAgeInHours = yourAgeInDays * 24;
-    
+
     var h1 = document.createElement('h1');
     var h3 = document.createElement('h3');
     var h5 = document.createElement('h5');
@@ -35,4 +32,5 @@ function reset() {
     document.getElementById('yourAge', 'yourAgeInDays', 'yourAgeInHours').remove();
     document.getElementById('yourAgeInDays').remove();
     document.getElementById('yourAgeInHours').remove();
+
 }
