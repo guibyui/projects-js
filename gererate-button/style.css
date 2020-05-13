@@ -1,0 +1,29 @@
+.container__whole {
+    border: 1px solid black;
+    width: 75%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.container__buttons {
+    padding: 10px;
+}
+
+h1 {
+    border: 1px solid black;
+}
+
+.container__response {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.container__response img{
+    margin: 10px;
+    width: 25%;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.7);
+}
