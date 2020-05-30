@@ -1,0 +1,63 @@
+.container__whole {
+    border: 5px solid black;
+    text-align: center;
+    width: 99%;
+    margin: 10vw auto;
+    background-color: brown;
+    color: white;
+    border-radius: 5%;
+    padding: 10px;
+}
+
+.row1,
+.row2,
+.row3 {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    padding: 10px;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.row1,
+.row2 {
+    background: url('https://ie1-gfebf.cdnppb.net/mexchangeblackjack/turbo/32/assets/gameView/tableBackground.png?v32') center;
+    /* background: url('https://mk0gamesnetentcxytko.kinstacdn.com/wp-content/uploads/2018/09/blackjack_background.jpg') center; */
+}
+
+.row1 div {
+    /* display: flex;
+    align-items: center; */
+    border: 1px solid white;
+    padding: 10px;
+    flex: 1;
+    height: 550px;
+}
+
+.row1 img {
+    margin: 10px;
+    padding: 10px;
+    width: 25%;
+}
+
+.row2 button {
+    border: 1px solid white;
+}
+
+
+.myTable {
+    /* border: 1px solid white; */
+    text-align: center;
+    color: white;
+}
+
+.myTable tr th {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.myTable tr td {
+    border: 1px solid white;
+    padding: 10px;
+}
