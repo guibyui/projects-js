@@ -1,3 +1,5 @@
+// Based on Rafi Kazi teachings
+
 let blackjackGame = {
     'you': {
         'scoreSpan': '#your-blackjack-result',
