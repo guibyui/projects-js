@@ -1,0 +1,13 @@
+.footer-info {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: darkgray;
+    border-radius: 50px;
+    text-align: center;
+    padding: 1px;
+    /* background: fixed; */
+}
+
+.flex-list {
+    display: flex;
+    justify-content: center;
+}
