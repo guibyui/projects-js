@@ -5,8 +5,6 @@ module.exports = {
   connection: {
     filename: path.resolve(
       __dirname,
-      "server",
-      "src",
       "database",
       "database.sqlite"
     ),
@@ -14,10 +12,9 @@ module.exports = {
   migrations: {
     directory: path.resolve(
       __dirname,
-      "server",
-      "src",
       "database",
       "migrations"
-    ),
+    )
   },
+  useNullAsDefault: true,
 };
