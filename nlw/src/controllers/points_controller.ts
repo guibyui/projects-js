@@ -3,10 +3,10 @@ import knex from '../database/connection'
 
 class pointsController {
   async index(request: Request, response: Response) {
-    // City, uf, items
-    const { city, uf, items } = request.query;
+    // City, state, items
+    const { city, state, items } = request.query;
 
-    console.log(city, uf, items);
+    console.log(city, state, items);
 
     const parsedItems = String(items)
     .split(',')
@@ -16,7 +16,7 @@ class pointsController {
     .join('point_items', 'points.id', '=', 'point_items.point_id')
     .whereIn('point_items.item_id', parsedItems)
     .where('city', String(city))
-    .where('uf', String(uf))
+    .where('state', String(state))
     .distinct()
     .select('points.*');
 
@@ -55,10 +55,10 @@ class pointsController {
     const {
       name,
       email,
-      whatsapp,
+      phoneNumber,
       latitude,
       longitude,
-      uf,
+      state,
       city,
       items
     } = request.body;
@@ -70,10 +70,10 @@ class pointsController {
       image: "https://images.unsplash.com/photo-1501523460185-2aa5d2a0f981?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=350&q=60",
       name,
       email,
-      whatsapp,
+      phoneNumber,
       latitude,
       longitude,
-      uf,
+      state,
       city,
     };
 
