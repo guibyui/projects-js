@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import logo from "../../assets/logo.svg";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { Map, TileLayer, Marker } from "react-leaflet";
+import axios from "axios";
 import api from "../../services/api";
 
 import "./styles.css";
@@ -11,20 +12,71 @@ import "./styles.css";
 // we need to inform the type of the variable manually.
 
 interface Item {
-    id: number;
-    title: string;
-    image_url: string;
+  id: number;
+  title: string;
+  image_url: string;
+}
+
+interface StateResponse {
+  name: string;
+}
+
+interface StateCityResponse {
+  city: string
 }
 
 const CreatePoint = () => {
-    const [items, setItems] = useState<Item[]>([]);
-
+  const [items, setItems] = useState<Item[]>([]);
+  const [states, setStates] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
+  
+  const [selectedState, setSelectedState] = useState("0");
 
   useEffect(() => {
     api.get("items").then((response) => {
       setItems(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    console.log('Changed: ', selectedState);
+
+    axios
+      .get<StateResponse[]>(
+        "https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_titlecase.json"
+      )
+      .then((response) => {
+        const stateInitials = response.data.map(state => state.name);
+
+        // console.log(stateInitials);
+        setStates(stateInitials);
+      });
+    
+  }, [selectedState]);
+
+  //https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_titlecase.json
+  useEffect(() => {
+    // Load cities when a state is selected
+    if (selectedState === '0') {
+      return;
+    }
+    axios
+      .get<StateCityResponse[]>(
+        "./web/src/state-cities.json"
+      )
+      .then((response) => {
+        const cityNames = response.data.map(city => city.city);
+
+        // console.log(stateInitials);
+        setCities(cityNames);
+      });
+  }, [selectedState]);
+
+  function handleSelectState(event: ChangeEvent<HTMLSelectElement>) {
+    const state = event.target.value;
+
+    setSelectedState(state);
+  }
 
   return (
     <div id="page-create-point">
@@ -81,8 +133,18 @@ const CreatePoint = () => {
           <div className="field-group">
             <div className="field">
               <label htmlFor="state">State</label>
-              <select name="state" id="state">
+              <select
+                name="state"
+                id="state"
+                value={selectedState}
+                onChange={handleSelectState}
+              >
                 <option value="0"> Select a State </option>
+                {states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -90,6 +152,11 @@ const CreatePoint = () => {
               <label htmlFor="city">City</label>
               <select name="city" id="city">
                 <option value="0"> Select a City </option>
+                {cities.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
