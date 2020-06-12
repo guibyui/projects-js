@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import knex from '../database/connection';
+import { Request, Response } from "express";
+import knex from "../database/connection";
 
 class itemsController {
   async index(request: Request, response: Response) {
@@ -9,7 +9,7 @@ class itemsController {
       return {
         id: item.id,
         title: item.title,
-        image_url: `http://localhost:3333/uploads/${item.image}`,
+        image_url: `http://192.168.1.15:3333/uploads/${item.image}`,
       };
     });
 

@@ -44,7 +44,7 @@ const CreatePoint = () => {
 
   const [selectedState, setSelectedState] = useState("0");
   const [selectedCity, setSelectedCity] = useState("0");
-  const [selectedItems, setSelectedItem] = useState<number[]>([]);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
     0,
     0,
@@ -127,9 +127,9 @@ const CreatePoint = () => {
     if (alreadySelected >= 0) {
       const filteredItems = selectedItems.filter((item) => item !== id);
 
-      setSelectedItem(filteredItems);
+      setSelectedItems(filteredItems);
     } else {
-      setSelectedItem([...selectedItems, id]);
+      setSelectedItems([...selectedItems, id]);
     }
   }
 
@@ -157,9 +157,9 @@ const CreatePoint = () => {
 
     // console.log(data);
 
-    alert('Registration Concluded!');
+    alert("Registration Concluded!");
 
-    history.push('/');
+    history.push("/");
   }
 
   return (
