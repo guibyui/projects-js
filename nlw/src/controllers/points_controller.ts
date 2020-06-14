@@ -6,7 +6,7 @@ class pointsController {
     // City, state, items
     const { city, state, items } = request.query;
 
-    console.log(city, state, items);
+    // console.log(city, state, items);
 
     const parsedItems = String(items)
     .split(',')
@@ -20,7 +20,7 @@ class pointsController {
     .distinct()
     .select('points.*');
 
-    return response.json({points});
+    return response.json(points);
   }
   
   async show(request: Request, response: Response) {
