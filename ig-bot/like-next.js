@@ -13,6 +13,7 @@ function clickHeartAndArrow() {
         counter++;
         console.log(`You've liked ${counter} post(s)!`);
     }
+    
     arrow.click();
 }
 
@@ -24,6 +25,29 @@ function clickHeartAndArrow() {
 }())
 
 /******************************************************************* */
+
+// Working, Just need to automate
+(() => {
+  let followNumber = 1;
+  const followInterval = setInterval(() => {
+    if (followNumber >= 5) {
+      clearInterval(followInterval);
+      return;
+    }
+
+    const buttons = document.querySelectorAll(".wpO6b");
+    const arrow = document.querySelector(".coreSpriteRightPaginationArrow");
+    const nextButton = buttons[followNumber];
+    nextButton.click();
+    followNumber++;
+
+    console.log(`You've liked ${followNumber - 1} post(s)!`);
+    arrow.click();
+  }, 2000)
+})();
+
+/******************************************************************* */
+
 
 // Working, Just need to automate
 (() => {
